@@ -1,0 +1,77 @@
+﻿@model Patient
+
+
+@using (Html.BeginForm(actionName:"diabet",controllerName:"predict", FormMethod.Post))
+{
+    <div class="form-group mt-2">
+        <label asp-for="Pregnancies" class="col-md-2 control-label text-white"></label>
+        <div class="col-md-5">
+            @Html.TextBoxFor(p => p.Pregnancies, "number", new { @class = "form-control bg-black text-white" })
+        </div>
+    </div>
+
+    <div class="form-group mt-2">
+        <label asp-for="Glucose" class="col-md-2 control-label text-white"></label>
+        <div class="col-md-5">
+            @Html.TextBoxFor(p => p.Glucose, "number", new { @class = "form-control bg-black text-white" })
+        </div>
+    </div>
+
+
+    <div class="form-group mt-2">
+        <label asp-for="BloodPressure" class="col-md-2 control-label text-white"></label>
+        <div class="col-md-5">
+            @Html.TextBoxFor(p => p.BloodPressure, "number", new { @class = "form-control bg-black text-white" })
+        </div>
+    </div>
+
+    <div class="form-group mt-2">
+        <label asp-for="SkinThickness" class="col-md-2 control-label text-white"></label>
+        <div class="col-md-5">
+            @Html.TextBoxFor(p => p.SkinThickness, "number", new { @class = "form-control bg-black text-white" })
+        </div>
+    </div>
+
+    <div class="form-group mt-2">
+        <label asp-for="Insulin" class="col-md-2 control-label text-white"></label>
+        <div class="col-md-5">
+            @Html.TextBoxFor(p => p.Insulin, "number", new { @class = "form-control bg-black text-white" })
+        </div>
+    </div>
+
+    <div class="form-group mt-2">
+        <label asp-for="BMI" class="col-md-2 control-label text-white"></label>
+        <div class="col-md-5">
+            @Html.TextBoxFor(p => p.BMI, "number", new { @class = "form-control bg-black text-white" })
+        </div>
+    </div>
+
+
+    <div class="form-group mt-2">
+        <label asp-for="DiabetesPedigreeFunction" class="col-md-2 control-label text-white"></label>
+        <div class="col-md-5">
+            @Html.TextBoxFor(p => p.DiabetesPedigreeFunction, "number", new { @class = "form-control bg-black text-white" })
+        </div>
+    </div>
+
+    <div class="form-group mt-2">
+        <label asp-for="Age" class="col-md-2 control-label text-white"></label>
+        <div class="col-md-5">
+            @Html.TextBoxFor(p => p.Age, "number", new { @class = "form-control bg-black text-white" })
+        </div>
+    </div>
+
+    <div class="form-group mt-2">
+        <label asp-for="Prediction" class="col-md-2 control-label text-white"></label>
+        <div class="col-md-5">
+            @Html.TextAreaFor(p => p.Prediction, 3, 200, new { @class = "form-control bg-black text-white", @disabled = "disabled", @cols = "100" })
+        </div>
+    </div>
+
+    <div class="form-group mt-3">
+        <div class="col-md-offset-2 col-md-5 text-center">
+            <input type="submit" class="btn btn-primary" value="Tahmin Et" />
+        </div>
+    </div>
+
+}

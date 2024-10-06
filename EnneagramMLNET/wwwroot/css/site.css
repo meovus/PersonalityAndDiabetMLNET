@@ -1,0 +1,140 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.image-col{
+    margin-top : 80px;
+    margin-left : 0px;
+}
+/* Custom Modern TextBox Styles */
+.custom-textbox {
+    border: 2px solid #ced4da;
+    border-radius: 12px;
+    padding: 10px 15px;
+    font-size: 16px;
+    width: 100%;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #f8f9fa;
+    outline: none;
+    color: #495057;
+}
+
+    /* Focus State */
+.custom-textbox:focus {
+   border-color: #007bff;
+   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+    /* Disabled State */
+.custom-textbox[disabled] {
+  background-color: #e9ecef;
+  cursor: not-allowed;
+}
+
+.prediction {
+    margin-left : 150px;
+}
+
+.control-label {
+    margin-bottom : 10px;
+}
+
+
+/* Custom Modern DropDown Styles */
+.custom-dropdown {
+    appearance: none; /* Remove default arrow in some browsers */
+    background-color: #f8f9fa;
+    border: 2px solid #ced4da;
+    border-radius: 12px;
+    padding: 10px 15px;
+    font-size: 16px;
+    width: 100%;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    color: #495057;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3csvg xmlns%3d%27http%3a//www.w3.org/2000/svg%27 viewBox%3d%270 0 4 5%27%3e%3cpath fill%3d%27%23343434%27 d%3d%27M2 0L0 2h4zM2 5L0 3h4z%27/%3e%3c/svg%3e');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+    cursor: pointer;
+}
+
+    /* Focus State */
+    .custom-dropdown:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        outline: none;
+    }
+
+    /* Hover State */
+    .custom-dropdown:hover {
+        border-color: #80bdff;
+    }
+
+    /* Disabled State */
+    .custom-dropdown[disabled] {
+        background-color: #e9ecef;
+        cursor: not-allowed;
+    }
+
+.custom-label {
+    font-size: 1.1rem; /* Modern, okunabilir font büyüklüðü */
+    font-weight: 500; /* Orta kalýnlýk */
+    color: #ffffff; /* Beyaz renk */
+    padding: 0.5rem 0; /* Dikey boþluklar */
+    transition: color 0.3s ease, transform 0.3s ease; /* Hover ve focus için geçiþler */
+    cursor: pointer; /* Fare iþaretçisi */
+}
+
+    /* Hover durumunda renk ve hafif büyütme efekti */
+    .custom-label:hover {
+        color: #80bdff; /* Hover renginde açýk mavi */
+        transform: scale(1.05); /* Hafif büyüme efekti */
+    }
+
+    /* Input odaklandýðýnda label'e odak ekleme */
+    .custom-label:focus-within {
+        color: #007bff; /* Focus renginde mavi */
+        transform: translateY(-3px); /* Biraz yukarý kaldýr */
+    }
+
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Siyah arka plan */
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-content {
+    text-align: center;
+}
+
+.loading-text {
+    color: #ffffff;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+}

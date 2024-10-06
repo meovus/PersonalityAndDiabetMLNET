@@ -1,0 +1,73 @@
+﻿@using System.ComponentModel
+@using System.Reflection
+@model PersonalityMLModel.ModelInput;
+@{
+    List<SelectListItem> selectList = new();
+    selectList.Add(new() { Text = "Kesinlikle Katılıyorum.",Value = "3.0"});
+    selectList.Add(new() { Text = "Kısmen Katılıyorum.", Value = "2.0" });
+    selectList.Add(new() { Text = "Azda Olsa Katılıyorum.", Value = "1.0" });
+    selectList.Add(new() { Text = "Kararsızım.", Value = "0.0" });
+    selectList.Add(new() { Text = "Azda Olsa Katılmıyorum.", Value = "-1.0" });
+    selectList.Add(new() { Text = "Kısmen Katılmıyorum.", Value = "-2.0" });
+    selectList.Add(new() { Text = "Kesinlikle Katılmıyorum.", Value = "-3.0" });
+
+    var modelProps = typeof(PersonalityMLModel.ModelInput).GetProperties();
+}
+
+<div id="loading-screen" class="loading-screen" style="display: none;">
+    <div class="loading-content">
+        <div class="spinner-border text-light" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <p class="loading-text">Analiz ediliyor...</p>
+    </div>
+</div>
+
+
+<div class="row">
+    <!-- Form column -->
+    <div class="col-md-6">
+        @using (Html.BeginForm(actionName: "personality", controllerName: "predict", FormMethod.Post))
+        {
+
+            @for (int step = 0; step < 12; step++)
+            {
+
+                <div id="step-@(step+1)" class="form-step @(step != 0 ? "d-none" : "")">
+                    <h3 class="text-white">Adım @(step+1)</h3>
+                    @foreach (var prop in modelProps.Skip(step*5).Take(5))
+                    {
+                        var descriptionAttribute = (DescriptionAttribute)prop.GetCustomAttribute(typeof(DescriptionAttribute), false);
+
+                        <div class="form-group mt-2">
+                            <label class="col-md-10 control-label text-white custom-label">
+                                @(descriptionAttribute.Description != null ? descriptionAttribute.Description : "")
+                            </label>
+                            <div class="col-md-10">
+                                @Html.DropDownList(@prop.Name, selectList, "Seçenekler", new { @class = "custom-dropdown" })
+                            </div>
+                        </div>
+                    }
+                    <div class="text-center mt-3">
+                        @if (step > 0){ <button type="button" class="btn btn-secondary" onclick="prevStep(@step)">Önceki</button> }
+                        @if (step < 11){ <button type="button" class="btn btn-primary" onclick="nextStep(@(step+2))">Sonraki</button> }
+                        @if (step == 11){ <button type="submit" class="btn btn-primary" onclick="showLoadingScreen()">Analiz Et</button> }
+                    </div>
+                </div>
+
+            }
+
+        }
+    </div>
+
+    <!-- Image column -->
+    <div class="col-md-6 text-center">
+        <img src="~/images/enneagram.jpg" class="img-fluid image-col" alt="Enneagram Image" />
+
+        <div class="form-group mt-5 prediction">
+            <div class="col-md-8 ml-3">
+                @Html.TextAreaFor(p => p.PredictionResult, 3, 200, new { @class = "form-control bg-black text-white", @disabled = "disabled", @placeholder = "Test Sonuçları" })
+            </div>
+        </div>
+    </div>
+</div>
